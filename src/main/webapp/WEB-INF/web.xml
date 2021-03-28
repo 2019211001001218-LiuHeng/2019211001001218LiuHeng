@@ -4,15 +4,42 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <!--add code about new servlet-->
-    <servlet>
-        <servlet-name>anyName</servlet-name><!-- give any name -->
-        <servlet-class>com.LiuHeng.week2.demo.HelloWorldServlet</servlet-class><!--package +name of servlet class-->
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>anyName</servlet-name>
-        <url-pattern>/hello</url-pattern><!--url must start with /-->
-    </servlet-mapping>
-    <!--x=5 ,a=x so we can say a=5
-    so /hello==com.LiuHeng.week2.demo.HelloWorldServlet
-    -->
+<!--within web-app,for all servlet and jsp in this project-->
+        <!--using SQL Server db,i want to want change mysql db-->
+        <!--<context-param>
+
+        <context-param>
+            <param-name>driver</param-name>
+            <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
+        </context-param>
+        <context-param>
+            <param-name>url</param-name>
+            <param-value>jdbc:sqlserver://localhost:databaseName=userdlb</param-value>
+        </context-param>
+        <context-param>
+            <param-name>username</param-name>
+            <param-value>sa</param-value>
+        </context-param>
+        <context-param>
+            <param-name>password</param-name>
+            <param-value>admin123456789</param-value>
+        </context-param>
+-->
+    <!--use mysql -->
+    <context-param>
+        <param-name>driver</param-name>
+        <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>url</param-name>
+        <param-value>jdbc:sqlserver://localhost:databaseName=userdlb</param-value>
+    </context-param>
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>sa</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>admin123456789</param-value>
+    </context-param>
 </web-app>
