@@ -42,4 +42,23 @@
         <param-name>password</param-name>
         <param-value>admin123456789</param-value>
     </context-param>
+
+    <!--not within my servlet-->
+    <servlet>
+        <servlet-name>anyName</servlet-name><!-- give any name -->
+        <servlet-class>com.LiuHeng.week2.demo.HelloWorldServlet</servlet-class><!--package +name of servlet class-->
+    </servlet>
+    <servlet>
+        <servlet-name>LifeCycleServlet</servlet-name>
+        <servlet-class>com.LiuHeng.week3.demo.LifeCycleServlet</servlet-class>
+    </servlet>
+    <!--automatic code-->
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.LiuHeng.week3.demo.RegieterServlet</servlet-class>
+    </servlet>
+    <servlet>
+    <servlet-name>JDBCDemoServlet</servlet-name>
+    <servlet-class>com.LiuHeng.week4.demo.JDBCDemoServlet</servlet-class>
+    </servlet>
 </web-app>
