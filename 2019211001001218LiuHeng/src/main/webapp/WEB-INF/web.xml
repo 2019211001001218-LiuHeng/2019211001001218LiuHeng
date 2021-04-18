@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <!--add code about new servlet-->
+<!--within web-app,for all servlet and jsp in this project-->
+        <!--using SQL Server db,i want to want change mysql db-->
+        <!--<context-param>
+
+        <context-param>
+            <param-name>driver</param-name>
+            <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
+        </context-param>
+        <context-param>
+            <param-name>url</param-name>
+            <param-value>jdbc:sqlserver://localhost:databaseName=userdlb</param-value>
+        </context-param>
+        <context-param>
+            <param-name>username</param-name>
+            <param-value>sa</param-value>
+        </context-param>
+        <context-param>
+            <param-name>password</param-name>
+            <param-value>admin123456789</param-value>
+        </context-param>
+-->
+    <!--use mysql -->
+    <context-param>
+        <param-name>driver</param-name>
+        <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>url</param-name>
+        <param-value>jdbc:sqlserver://localhost:databaseName=userdlb</param-value>
+    </context-param>
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>sa</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>admin123456789</param-value>
+    </context-param>
+
+    <!--not within my servlet-->
+    <servlet>
+        <servlet-name>anyName</servlet-name><!-- give any name -->
+        <servlet-class>com.LiuHeng.week2.demo.HelloWorldServlet</servlet-class><!--package +name of servlet class-->
+    </servlet>
+    <servlet>
+        <servlet-name>LifeCycleServlet</servlet-name>
+        <servlet-class>com.LiuHeng.week3.demo.LifeCycleServlet</servlet-class>
+    </servlet>
+    <!--automatic code-->
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.LiuHeng.week3.demo.RegieterServlet</servlet-class>
+    </servlet>
+    <servlet>
+    <servlet-name>JDBCDemoServlet</servlet-name>
+    <servlet-class>com.LiuHeng.week4.demo.JDBCDemoServlet</servlet-class>
+    </servlet>
+</web-app>
