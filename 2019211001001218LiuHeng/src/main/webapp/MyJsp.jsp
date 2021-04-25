@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<a href="index.jsp">go to ecjtu</a><!--method is GET-->
+<a href="http://www.ecjtu.jx.cn/">go to ecjtu</a><!--method is GET-->
 <form method="post"><!--what is method when we use form?--><!--its GET,why?default is GET,form data is added in the URl,u can see-->-->
 <!--its better to use POST in form,data in not added in the URL-->
     Name:<input type="text" name="name"><br/>

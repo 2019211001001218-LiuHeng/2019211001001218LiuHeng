@@ -38,32 +38,52 @@ public class LoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
-        String password = request.getParameter("password");
-        //now move jdbc code in dao-MVC design
-        //write mvc code
-        //use model and dao
-        UserDao userDao = new UserDao();
+        String password= request.getParameter("password");
+        UserDao userDao=new UserDao();
         try {
-            User use= userDao.findByUsernamePassword(con, username, password);//this methods use for login
+            User user= userDao.findByUsernamePassword(con ,name,password);
             if(user!=null){
-                //valid
-                //set user into request
-                request.setAttribute("user",user);//get use info in jsp
-                request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
-            }else{
-                //invalid
-                request.setAttribute("message","Username or Password Error!!!");
-                request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
-            }
-            //forward  -JSP
-        } catch (SQLException throwables){ ;
-    }
+                //week 8
+                // Cookie c=new Cookie(name:"sessionID"),value:""+user.getID());
+                //c.setMaxAge(10*60);
+                //response.addCookie(c);
 
+
+
+                String rememberMe=request.getParameter("rememberMe");
+                if (rememberMe!=null &&rememberMe.equals("1"))
+                {
+                    Cookie usernameCookie = new Cookie("cUsername",user.getUsername());
+                    Cookie passwordCookie= new Cookie("cPassword",user.getPassword());
+                    Cookie rememberMeCookie = new Cookie("cRememberMe",request.getParameter("rememberMe"));
+                    usernameCookie.setMaxAge(10);
+                    passwordCookie.setMaxAge(10);
+                    rememberMeCookie.setMaxAge(10);
+                    response.addCookie(usernameCookie);
+                    response.addCookie(passwordCookie);
+                    response.addCookie(rememberMeCookie);
+
+                }
+
+
+                HttpSession session=   request.getSession();
+                System.out.println("session id-->"+session.getId());
+                session.setMaxInactiveInterval(10);
+
+
+                session.setAttribute("user",user);
+                request.getRequestDispatcher("WEB-INF/views/userinfo.jsp").forward(request,response);
+            }else{
+                request.setAttribute("msg" ,"username or password Error");
+                request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response); }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         System.out.println(name + password);
-//        System.out.println(con);
+        System.out.println(con);
         try {
             if( con != null){
-                String sql = "SELECT * FROM usertable WHERE name=? AND password=?;";
+              /*  String sql = "SELECT * FROM usertable WHERE name=? AND password=?;";
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setString(1,name);
                 ps.setString(2,password);
@@ -86,6 +106,11 @@ public class LoginServlet extends HttpServlet {
             }
         }catch (Exception e) {
             System.out.println(e);
+        }
+    }*/
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 }

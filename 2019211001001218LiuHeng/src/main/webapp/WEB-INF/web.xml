@@ -55,7 +55,7 @@
     <!--automatic code-->
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>com.LiuHeng.week3.demo.RegieterServlet</servlet-class>
+        <servlet-class>com.LiuHeng.week3.demo.RegisterServlet</servlet-class>
     </servlet>
     <servlet>
     <servlet-name>JDBCDemoServlet</servlet-name>

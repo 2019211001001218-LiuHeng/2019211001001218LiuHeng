@@ -20,14 +20,14 @@ import java.sql.SQLException;
                 @WebInitParam(name="password",value="admin123456789")
         },loadOnStartup = 1
 
-)//end of webservlet
+)//end of webServlet
 public class JDBCDemoServlet extends HttpServlet {
     Connection con=null;//class variable
     @Override
     public void init() throws ServletException{
         //only one connection
         //String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        //String url="jdbc:sqlserver://localhost:databaseName=userdlb";
+        //String url="jdbc:sqlserver://localhost:databaseName=userlh";
         //String username="sa";
         //String password="admin123456789";
         //code like this is bad way---because change is not easy
