@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Logger;
-
 import com.LiuHeng.dao.ProductDao;
 import com.LiuHeng.model.Product;
 

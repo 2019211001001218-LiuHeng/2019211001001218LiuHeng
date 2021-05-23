@@ -1,4 +1,5 @@
 package com.LiuHeng.model;
+
 import java.io.InputStream;
 
 public class Product {
