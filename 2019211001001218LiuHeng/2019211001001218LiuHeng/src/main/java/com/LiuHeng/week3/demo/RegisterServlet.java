@@ -1,5 +1,4 @@
 package com.LiuHeng.week3.demo;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -19,17 +18,19 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        doPost(request, response);
-        request.getRequestDispatcher("register.jsp").forward(request,response);
+        request.getRequestDispatcher("WEB-INF/views/register.jsp").forward(request,response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name,password,email,gender,date;
+        String name, password, email, gender, date;
         name = request.getParameter("name");
-        password = request.getParameter("password");email = request.getParameter("email");
-        gender = request.getParameter("gender");date = request.getParameter("date");
+        password = request.getParameter("password");
+        email = request.getParameter("email");
+        gender = request.getParameter("gender");
+        date = request.getParameter("date");
         PrintWriter writer = response.getWriter();
         String[][] r = new String[1000][6];
-        int  a= 0;
+        int a = 0;
         try {
             Statement createDbStatement = dbConn.createStatement();
             String ADDdbRequire = "insert into usertable values('" + name + "','" + password + "','" + email + "','" + gender + "','" + date + "')";
@@ -46,6 +47,6 @@ public class RegisterServlet extends HttpServlet {
         // writer.println("<table border=\"2\"width=\"80%\"borderColor=\"pink\"bgcolor=\"#DCE3F5\"><tr><td>ID</td><td>UserName</td><td>Password</td><td>Email</td><td>Gender</td><td>Birthdate</td></tr>");
         // for (int x = 0; x < a; x++) {for (int y = 0; y < 6; y++) { writer.println("<td>" + r[x][y] + "</td>");}
         // writer.println("</tr>"); }writer.println("</table>");
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("WEB-INF/views/login.jsp");
     }}
 

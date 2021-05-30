@@ -1,38 +1,32 @@
 package com.LiuHeng.week5.demo;
 import com.LiuHeng.dao.UserDao;
 import com.LiuHeng.model.User;
-
-import java.sql.PreparedStatement;
+import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
+import java.io.PrintWriter;
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
     Connection con = null;
     @Override
     public void init() throws ServletException {
-
 //    public Connection dbConn;
 //    public void init() {
 //        try { Class.forName(getServletConfig().getServletContext().getInitParameter("driver"));
 //            dbConn = DriverManager.getConnection(getServletConfig().getServletContext().getInitParameter("url"), getServletConfig().getServletContext().getInitParameter("Username"), getServletConfig().getServletContext().getInitParameter("Password"));
 //        } catch (Exception e) {
 //            System.out.println(e); }
-        con =(Connection)getServletContext().getAttribute("dbConn");//ok
+        con =(Connection)getServletContext().getAttribute("dbConn");
 //        System.out.println(con);
     }
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
-        //when user click login menu-request is get
-        request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
+//        doPost(request, response);
+        request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request, response);
     }
     @Override
 
@@ -50,12 +44,12 @@ public class LoginServlet extends HttpServlet {
 
 
 
-                String rememberMe=request.getParameter("rememberMe");
+                String rememberMe=request.getParameter("remember");
                 if (rememberMe!=null &&rememberMe.equals("1"))
                 {
                     Cookie usernameCookie = new Cookie("cUsername",user.getUsername());
                     Cookie passwordCookie= new Cookie("cPassword",user.getPassword());
-                    Cookie rememberMeCookie = new Cookie("cRememberMe",request.getParameter("rememberMe"));
+                    Cookie rememberMeCookie = new Cookie("cRememberMe",request.getParameter("remember"));
                     usernameCookie.setMaxAge(10);
                     passwordCookie.setMaxAge(10);
                     rememberMeCookie.setMaxAge(10);
@@ -68,7 +62,7 @@ public class LoginServlet extends HttpServlet {
 
                 HttpSession session=   request.getSession();
                 System.out.println("session id-->"+session.getId());
-                session.setMaxInactiveInterval(10);
+                session.setMaxInactiveInterval(100000);
 
 
                 session.setAttribute("user",user);
